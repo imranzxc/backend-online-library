@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(require('./routes'))
 
 
-mongoose.connect('mongodb+srv://nanoface:mistersea42@cluster0.fhte6.mongodb.net/onlien-library', {
+mongoose.connect('mongodb+srv://nanoface:mistersea42@cluster0.fhte6.mongodb.net/online-library', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
