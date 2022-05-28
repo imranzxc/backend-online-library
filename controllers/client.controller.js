@@ -68,40 +68,40 @@ module.exports.clientController = {
   //* Getting book 4rent
   patchRentBook: async (req, res) => {
     try {
-      //getting client id
+      //?getting client id
       const client = await Client.findById(req.params.id);
 
-      //if client blocked
+      //?if client blocked
       if (client.isBlocked === true) {
         return res.json(
           "We apologize for the inconvenience. You are blocked:("
         );
       }
 
-      //if book is already rented by some1
+      //?if book is already rented by some1
       const book = await Book.findById(req.params.bookId);
       if (book.isRented === true) {
         return res.json("This book already rented");
       }
 
-      //if book rented too many times
+      //?if book rented too many times
       if (client.bookIsRented.length >= 3) {
         return res.json("You cant rent more than 3 books at the same time");
       }
 
-      //adding book into array of books
+      //?adding book into array of books
       await Client.findByIdAndUpdate(req.params.id, {
         $push: { bookIsRented: req.params.bookId },
       });
 
-      //changing book boolean status
+      //?changing book boolean status
 
       await Book.findByIdAndUpdate(req.params.bookId, {
         client: req.params.id,
         isRented: true,
       });
 
-      //giving response info
+      //?giving response info
       res.json("Book is successfully added");
     } catch (err) {
       res.json(err);
@@ -141,6 +141,37 @@ module.exports.clientController = {
       } else {
         res.json(err);
       }
+    } catch (err) {
+      res.json(err);
+    }
+  },
+
+  getClients: async (req, res) => {
+    try {
+      const allClients = await Client.find({}).populate("bookIsRented");
+      res.json(allClients);
+    } catch (err) {
+      res.json(err);
+    }
+  },
+
+  getClientById: async (req, res) => {
+    try {
+      const clientId = await Client.findById(req.params.id);
+      res.json(clientId);
+    } catch (err) {
+      res.json(err);
+    }
+  },
+
+  patchClient: async (req, res) => {
+    try {
+      await Client.findByIdAndUpdate(req.params.id, {
+        name: req.body.name,
+        bookIsRented: req.body.bookIsRented,
+        isBlocked: req.body.isBlocked,
+      })
+      res.json("Client has been changed");
     } catch (err) {
       res.json(err);
     }

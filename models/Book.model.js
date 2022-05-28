@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const booksShema = mongoose.Schema({
+const booksSсhema = mongoose.Schema({
   name: String,
   genre: {
     ref: "Genre",
@@ -15,5 +15,5 @@ const booksShema = mongoose.Schema({
   }
 })
 
-const Book = mongoose.model("Book", booksShema)
+const Book = mongoose.model("Book", booksSсhema)
 module.exports = Book

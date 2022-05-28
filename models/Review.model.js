@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const reviewShema = mongoose.Schema({
+const reviewSсhema = mongoose.Schema({
 text: String,
 name: {
   ref: 'Client',
@@ -11,5 +11,5 @@ book: {
 }
 })
 
-const Review = mongoose.model("Review", reviewShema)
+const Review = mongoose.model("Review", reviewSсhema)
 module.exports = Review

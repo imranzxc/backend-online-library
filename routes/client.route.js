@@ -13,4 +13,10 @@ router.patch('/client/:id/bookIsRented/:bookId', clientController.patchRentBook)
 router.patch('/client/:id/bookReturn/:bookId', clientController.patchBookReturn)
 router.patch('/admin/client/:id/book/:bookId', clientController.takeBookBack)
 
+router.get('/client', clientController.getClients)
+router.get('/client/:id', clientController.getClientById)
+
+router.patch('/client/:id', clientController.patchClient)
+
+
 module.exports = router

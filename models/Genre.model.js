@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const genreShema = mongoose.Schema({
+const genreSсhema = mongoose.Schema({
 name: String,
 description: String
 })
 
-const Genre = mongoose.model("Genre", genreShema)
+const Genre = mongoose.model("Genre", genreSсhema)
 module.exports = Genre

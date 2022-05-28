@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const clientShema = mongoose.Schema({
+const clientSсhema = mongoose.Schema({
 name: String,
 bookIsRented: [
   {
@@ -15,5 +15,5 @@ isBlocked: {
 
 })
 
-const Client = mongoose.model("Client", clientShema)
+const Client = mongoose.model("Client", clientSсhema)
 module.exports = Client
